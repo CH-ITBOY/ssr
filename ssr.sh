@@ -148,8 +148,8 @@ chkconfig httpd on
 /etc/init.d/httpd start
 sleep 1
 yum remove -y mysql*
-yum --enablerepo=remi install -y mysql mysql-server mysql-devel
-chkconfig mysqld on 
+wget https://dev.mysql.com/get/mysql57-community-release-el6-9.noarch.rpm
+rpm -Uvh mysql57-community-release-el6-9.noarch.rpm
 service mysqld start
 sleep 1
 yum remove -y php*
