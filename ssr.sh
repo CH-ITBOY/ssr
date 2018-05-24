@@ -150,7 +150,7 @@ sleep 1
 yum remove -y mysql*
 wget https://dev.mysql.com/get/mysql57-community-release-el6-9.noarch.rpm
 rpm -Uvh mysql57-community-release-el6-9.noarch.rpm
-yum install mysql-community-server
+yum install - mysql-community-server
 service mysqld start
 sleep 1
 yum remove -y php*
