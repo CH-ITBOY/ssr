@@ -146,13 +146,7 @@ sleep 2
 yum -y install httpd 
 chkconfig httpd on
 /etc/init.d/httpd start
-sleep 1
-yum remove -y mysql*
-wget https://dev.mysql.com/get/mysql57-community-release-el6-9.noarch.rpm
-rpm -Uvh mysql57-community-release-el6-9.noarch.rpm
-yum install -y mysql-community-server
-service mysqld start
-sleep 1
+sleep1
 yum remove -y php*
 yum install -y --enablerepo=remi --enablerepo=remi-php56 php php-opcache php-devel php-mbstring php-mcrypt php-mysqlnd php-phpunit-PHPUnit php-pecl-xdebug php-pecl-xhprof php-bcmath php-cli php-common  php-devel php-fpm    php-gd php-imap  php-ldap php-mysql  php-odbc  php-pdo  php-pear  php-pecl-igbinary  php-xml php-xmlrpc php-opcache php-intl php-pecl-memcache
 service php-fpm start
@@ -189,7 +183,6 @@ cp config.json user-config.json
 sed -i "4s/ss/root/" /root/shadowsocks/usermysql.json >/dev/null 2>&1
 sed -i "5s/\"pass\"/\"$mysqlpass\"/" /root/shadowsocks/usermysql.json >/dev/null 2>&1
 cd /root
-mysqladmin -u root password $mysqlpass 
 mysql -uroot -p$mysqlpass -e"CREATE DATABASE shadowsocks;" 
 cd /var/www/html
 wget ${webs}${MirrorHost}/${ServerLocation}/ss-panel.zip >/dev/null 2>&1
